@@ -14,7 +14,7 @@ pluginCode = pluginCode.replace('_TEMPLATE_PLACEHOLDER', '`\n' + template.replac
 fs.writeFileSync('dist/retry-ensure-webpack-plugin.js', pluginCode);
 
 fs.copyFileSync('build/retry-ensure-webpack-plugin.d.ts', 'dist/retry-ensure-webpack-plugin.d.ts');
-fs.copyFileSync('build/readme.md', 'dist/readme.md');
+fs.copyFileSync('readme.md', 'dist/readme.md');
 
 const pkgJson = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 delete pkgJson.private;
