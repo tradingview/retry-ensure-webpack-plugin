@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"importHelpers": false,
+		"lib": [
+			"es5",
+			"es2015"
+		],
+		"noEmitOnError": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"stripInternal": true,
+		"target": "es6",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "build",
+		"newLine": "lf"
+	},
+	"files": [
+		"source/retry-ensure-webpack-plugin.ts"
+	]
+}

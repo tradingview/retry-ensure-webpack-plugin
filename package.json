@@ -1,0 +1,27 @@
+{
+	"private": true,
+	"name": "retry-ensure-webpack-plugin",
+	"version": "0.1.0-rc.1",
+	"description": "Webpack plugin for retrying async chunk loading",
+	"main": "retry-ensure-webpack-plugin.js",
+	"license": "WTFPL",
+	"author": {
+		"name": "Anton Khlynovskiy",
+		"email": "subzey@gmail.com"
+	},
+	"engines": {
+		"node": ">=6.11.5"
+	},
+	"devDependencies": {
+		"@types/webpack": "^4.4.19",
+		"rimraf": "^2.6.2",
+		"typescript": "^3.1.6"
+	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subzey/retry-ensure-webpack-plugin.git"
+  },
+	"scripts": {
+		"build": "tsc -p tsconfig.json && tsc -p tsconfig-injected.json && node assemble"
+	}
+}
