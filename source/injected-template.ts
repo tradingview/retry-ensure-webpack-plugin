@@ -7,7 +7,7 @@ type EnsureFunction = (chunkId: ChunkId) => Promise<EnsuredModule>;
 declare const __webpack_require__: {
 	e: EnsureFunction
 }
-declare const _MAX_PLACEHODER: number;
+declare const _MAX_CATCHABLE_PLACEHODER: number;
 declare const _DELAY_PLACEHODER: number;
 
 const _WebpackRetry_originalEnsure: EnsureFunction = __webpack_require__.e;
@@ -23,7 +23,7 @@ function _WebpackRetry_tryLoad(chunkId: ChunkId, retriedTimes: number): Promise<
 					if (navigator.onLine === false) {
 						// If navigator.onLine is supported, and is offline, wait for online
 						window.addEventListener('online', retry, false);
-					} else if (retriedTimes < _MAX_PLACEHODER) {
+					} else if (retriedTimes < _MAX_CATCHABLE_PLACEHODER) {
 						// Retry with a catch
 						resolve(_WebpackRetry_tryLoad(chunkId, retriedTimes + 1));
 					} else {

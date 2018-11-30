@@ -18,6 +18,12 @@ An optional parameter, object with properties.
 
 The max amount of retries. After that, Promise rejection is not handled by this plugin.
 
+_Note:_ This option is "max retries", not "max requests". In the worst case there would be `1 + max` requests total.
+
+If `max` equals `0`, this plugin is turned off entirely.
+
+`Infinity` is a valid value, if you want to retry until the end of time.
+
 Default: `3`.
 
 ### `delay` (`number | string`)
