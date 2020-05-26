@@ -2,6 +2,8 @@ Webpack plugin for retrying async chunk loading.
 
 Retries internal `__webpack__require__.e /* nsure */` function call on promise rejections.
 
+Compatible with Webpack 4 and 5.
+
 ## Usage
 
 ```js

@@ -7,12 +7,16 @@ export interface Options {
 	delay?: number | string,
 }
 
+type UnsafeOptions = {
+	[key in keyof Options]-?: unknown;
+}
+
 export class RetryEnsureWebpackPlugin implements Plugin {
 	private readonly _max: number;
 	private readonly _delay: number | string;
 
 	public constructor(options?: Options) {
-		const finalOptions: Record<string, unknown> = Object.assign(
+		const finalOptions: UnsafeOptions = Object.assign(
 			{
 				max: 3,
 				delay: 'retriedTimes * retriedTimes * 1000',
@@ -49,7 +53,7 @@ export class RetryEnsureWebpackPlugin implements Plugin {
 		}
 
 		compiler.hooks.thisCompilation.tap('RetryEnsureWebpackPlugin', (compilation: compilation.Compilation) => {
-			compilation.mainTemplate.plugin('require-extensions', (source: string): string => {
+			compilation.mainTemplate.hooks.requireExtensions.tap('RetryEnsureWebpackPlugin', (source: string): string => {
 				return source + (_TEMPLATE_PLACEHOLDER
 					.replace('_MAX_CATCHABLE_PLACEHODER', String(this._max - 1))
 					.replace('_DELAY_PLACEHODER', String(this._delay))
