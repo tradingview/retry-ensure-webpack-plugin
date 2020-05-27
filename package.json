@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "retry-ensure-webpack-plugin",
-	"version": "1.0.0-rc.1",
+	"version": "1.0.0-rc.2",
 	"description": "Webpack plugin for retrying async chunk loading",
 	"main": "retry-ensure-webpack-plugin.js",
 	"license": "WTFPL",
@@ -13,7 +13,6 @@
 		"node": ">=6.11.5"
 	},
 	"devDependencies": {
-		"@types/webpack": "^4.41.13",
 		"rimraf": "^3.0.2",
 		"typescript": "^3.9.3"
 	},
@@ -23,5 +22,6 @@
 	},
 	"scripts": {
 		"build": "tsc -p tsconfig.json && tsc -p tsconfig-injected.json && node assemble"
-	}
+	},
+	"dependencies": {}
 }
