@@ -13,6 +13,9 @@ export namespace Webpack5 {
 		}
 	}
 	export interface Compilation {
+		outputOptions: {
+			globalObject: string
+		}
 		mainTemplate: {
 			hooks: {
 				requireExtensions: {
@@ -44,6 +47,9 @@ export namespace Webpack4 {
 		}
 	}
 	export interface Compilation {
+		outputOptions: {
+			globalObject: string
+		}
 		mainTemplate: {
 			hooks: {
 				requireExtensions: {
@@ -124,6 +130,7 @@ export class RetryEnsureWebpackPlugin implements Webpack4.Plugin, Webpack5.Plugi
 				return source + (_TEMPLATE_PLACEHOLDER
 					.replace('_MAX_CATCHABLE_PLACEHODER', String(this._max - 1))
 					.replace('_DELAY_PLACEHODER', String(this._delay))
+					.replace(/_GLOBAL_OBJECT_PLACEHODER/g, compilation.outputOptions.globalObject)
 				);
 			});
 		});

@@ -9,6 +9,7 @@ declare const __webpack_require__: {
 }
 declare const _MAX_CATCHABLE_PLACEHODER: number;
 declare const _DELAY_PLACEHODER: number;
+declare const _GLOBAL_OBJECT_PLACEHODER: Window;
 
 const _WebpackRetry_originalEnsure: EnsureFunction = __webpack_require__.e;
 const _WebpackRetry_pendingPromises: Record<ChunkId, Promise<EnsuredModule>> = Object.create(null);
@@ -19,10 +20,10 @@ function _WebpackRetry_tryLoad(chunkId: ChunkId, retriedTimes: number): Promise<
 			return new Promise(function (resolve: (ensuredModule: EnsuredModule | Promise<EnsuredModule>) => void) {
 				const retry = (): void => {
 					// Clean up. No-op if the listener is not set
-					window.removeEventListener('online', retry, false);
+					_GLOBAL_OBJECT_PLACEHODER.removeEventListener('online', retry, false);
 					if (navigator.onLine === false) {
 						// If navigator.onLine is supported, and is offline, wait for online
-						window.addEventListener('online', retry, false);
+						_GLOBAL_OBJECT_PLACEHODER.addEventListener('online', retry, false);
 					} else if (retriedTimes < _MAX_CATCHABLE_PLACEHODER) {
 						// Retry with a catch
 						resolve(_WebpackRetry_tryLoad(chunkId, retriedTimes + 1));
